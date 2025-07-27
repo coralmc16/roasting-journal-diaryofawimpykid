@@ -15,24 +15,20 @@
     border-radius: 12px;
   }
   
-  /* CoverPage.css */
+ 
   .avatar-select-page {
     width: 100vw;
     height: 100vh;
   
-    /* Remove background color */
-    /* background-color: #cfe9fd; */
-  
-    /* Add background image */
+    
     background-image: url('../assets/download.webp');
     
-    /* Make sure it covers whole area */
+  
     background-size: cover;
-    
-    /* Center the image */
+
     background-position: center;
   
-    /* No repeat */
+ 
     background-repeat: no-repeat;
   
     display: flex;
@@ -43,11 +39,11 @@
   
   .avatar-preview {
   position: relative;
-  width: 1000px; /* Increase width */
-  aspect-ratio: 3 / 4; /* Keep the correct aspect ratio */
+  width: 1000px; 
+  aspect-ratio: 3 / 4; 
   margin-bottom: 2rem;
   background-image: url('../assets/cover.png');
-  background-size: contain; /* Ensures the full image is shown */
+  background-size: contain; 
   background-position: center;
   background-repeat: no-repeat;
 }
@@ -64,9 +60,9 @@
   
   
   .avatar-hair {
-    top: -1rem;        /* raise hair as needed */
-    left: 3rem;        /* center the hair since width > 100% */
-    width: 90%;       /* increase the size */
+    top: -1rem;       
+    left: 3rem;        
+    width: 90%;       
     z-index: 2;
   }
 
@@ -167,7 +163,7 @@
     margin-top: 1rem;
     padding: 0.6rem 1rem;
     font-size: 1.2rem;
-    background-color: #0088cc; /* nice blue */
+    background-color: #0088cc; 
     color: white;
     border: none;
     border-radius: 8px;
@@ -177,5 +173,5 @@
   }
   
   .download-btn:hover {
-    background-color: #006fa6; /* darker on hover */
+    background-color: #006fa6; 
   }

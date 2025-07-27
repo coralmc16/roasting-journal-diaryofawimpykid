@@ -3,6 +3,7 @@ import './IntroPage.css';
 import backgroundImage from '../assets/bkg.png';
 import themeSong from '../assets/themesong1.mp3';
 import cheeseImg from '../assets/cheese.webp';
+import cheeseTouchImg from '../assets/touch1.png'; // <-- NEW
 
 const fullText =
   "Weelcome to the Diary of a Wimpy Kid-themed Roasting Journal by Coral Carlsson. Design your avatar and chat with the roaster chatbot.";
@@ -10,10 +11,10 @@ const fullText =
 const IntroPage = ({ onContinue }) => {
   const [displayedText, setDisplayedText] = useState('');
   const [isPlaying, setIsPlaying] = useState(false);
+  const [gotCheeseTouch, setGotCheeseTouch] = useState(false); // <-- NEW
   const themeAudioRef = useRef(null);
   const typingIntervalRef = useRef(null);
 
-  // Typing animation
   useEffect(() => {
     let index = 0;
     typingIntervalRef.current = setInterval(() => {
@@ -31,13 +32,14 @@ const IntroPage = ({ onContinue }) => {
   }, []);
 
   const handleBeginClick = () => {
-    if (isPlaying) return; // prevent double clicks
+    if (isPlaying) return;
+
+    setGotCheeseTouch(true); // Show cheese touch popup
+    setIsPlaying(true);
 
     const audio = new Audio(themeSong);
     audio.loop = false;
     audio.volume = 0.7;
-
-    setIsPlaying(true); // update button state
 
     audio.play()
       .then(() => {
@@ -45,7 +47,7 @@ const IntroPage = ({ onContinue }) => {
       })
       .catch((err) => {
         console.warn("Audio playback failed, proceeding immediately:", err);
-        onContinue(); // fallback if playback fails
+        onContinue();
       });
 
     themeAudioRef.current = audio;
@@ -70,24 +72,33 @@ const IntroPage = ({ onContinue }) => {
         alignItems: 'center',
         padding: '2rem',
         textAlign: 'center',
+        position: 'relative', // <-- Required for cheeseTouch positioning
       }}
     >
       <p className="intro-text">{displayedText}</p>
+
       <button
         className="begin-button"
         onClick={handleBeginClick}
         disabled={isPlaying}
         aria-label="Begin"
-        >
+      >
         <div className="tooltip-container">
-            <img
+          <img
             src={cheeseImg}
             alt="Begin button cheese"
             className="cheese-image"
-            />
-            <span className="tooltip-text">touch if u dare</span>
+          />
+          <span className="tooltip-text">touch if u dare</span>
         </div>
-        </button>
+      </button>
+
+      {gotCheeseTouch && (
+        <div className="cheese-touch-popup">
+          <p className="cheese-touch-text">you got the cheese touch!!!</p>
+          <img src={cheeseTouchImg} alt="Cheese touch" className="cheese-touch-image" />
+        </div>
+      )}
     </div>
   );
 };

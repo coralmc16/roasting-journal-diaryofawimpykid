@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './CoverPage.css';
-import { playClickSound } from '../utils/playSound'; // 🔊 Import sound utility
+import { playClickSound } from '../utils/playSound'; 
 
 import hair1 from '../assets/hair/hair2.svg';
 import hair2 from '../assets/hair/hair11.svg';
@@ -15,6 +15,8 @@ import body1 from '../assets/body/boy2.svg';
 import body2 from '../assets/body/boy3.svg';
 import body3 from '../assets/body/girl1.svg';
 import body4 from '../assets/body/girl3.svg';
+
+
 
 const hairOptions = [hair1, hair2, hair3, hair4, hair5, hair6, hair7, hair8];
 const bodyOptions = [body1, body2, body3, body4];
@@ -35,44 +37,43 @@ const CoverPage = ({ onOpen }) => {
   }, [onOpen]);
 
   const changeHair = (dir) => {
-    playClickSound(); // 🔊 Play sound
+    playClickSound(); 
     setHairIndex((prev) => (prev + dir + hairOptions.length) % hairOptions.length);
   };
 
   const changeBody = (dir) => {
-    playClickSound(); // 🔊 Play sound
+    playClickSound(); 
     setBodyIndex((prev) => (prev + dir + bodyOptions.length) % bodyOptions.length);
   };
 
   const handleNameSubmit = () => {
-    playClickSound(); // 🔊 Play sound
+    playClickSound(); 
     setDisplayedName(nameInput.trim());
   };
 
   const handleStart = () => {
-    playClickSound(); // 🔊 Play sound
+    playClickSound(); 
     onOpen();
   };
 
-  // **Export avatar function**
+ 
   const handleDownloadAvatar = async () => {
     playClickSound();
 
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
 
-    // Clear canvas
+ 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Canvas size - choose avatar display size, e.g., 400x400 px
     canvas.width = 400;
     canvas.height = 400;
 
-    // Load images asynchronously
+ 
     const loadImage = (src) =>
       new Promise((resolve, reject) => {
         const img = new Image();
-        img.crossOrigin = 'anonymous'; // To avoid CORS issues if needed
+        img.crossOrigin = 'anonymous'; 
         img.onload = () => resolve(img);
         img.onerror = reject;
         img.src = src;
@@ -82,12 +83,12 @@ const CoverPage = ({ onOpen }) => {
       const bodyImg = await loadImage(bodyOptions[bodyIndex]);
       const hairImg = await loadImage(hairOptions[hairIndex]);
 
-      // Draw body first
+      //Draw body first
       ctx.drawImage(bodyImg, 0, 0, canvas.width, canvas.height);
-      // Draw hair on top
+      
       ctx.drawImage(hairImg, 0, 0, canvas.width, canvas.height);
 
-      // Create download link
+      //Create download link
       const dataURL = canvas.toDataURL('image/png');
       const link = document.createElement('a');
       link.href = dataURL;

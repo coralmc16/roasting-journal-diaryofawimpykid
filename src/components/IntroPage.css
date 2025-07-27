@@ -7,8 +7,8 @@
   background-position: center;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* vertical centering */
-  align-items: center;     /* horizontal centering */
+  justify-content: center;
+  align-items: center;     
   padding: 40px;
   text-align: center;
 }
@@ -16,7 +16,7 @@
 .intro-text {
   font-size: 2rem;
   color: #333;
-  background: rgba(255, 255, 255, 0); /* transparent */
+  background: rgba(255, 255, 255, 0); 
   padding: 1rem;
   border-radius: 12px;
   margin-bottom: 2rem;
@@ -26,11 +26,11 @@
 }
 
 .begin-button {
-    outline: none;          /* removes focus outline */
-    border: none;           /* removes border */
-    background: none;       /* remove default background since you're using an image */
-    padding: 0;             /* remove padding if needed */
-    cursor: pointer;        /* pointer cursor */
+    outline: none;         
+    border: none;           
+    background: none;      
+    padding: 0;             
+    cursor: pointer;        
   }
   
   
@@ -45,11 +45,6 @@
   .begin-button:hover .cheese-image {
     transform: scale(1.2);
   }
-
-  .tooltip-container {
-    position: relative;
-    display: inline-block;
-  }
   
   .tooltip-text {
     visibility: hidden;
@@ -61,7 +56,7 @@
     padding: 6px 10px;
     position: absolute;
     z-index: 10;
-    bottom: 125%; /* position above the cheese */
+    bottom: 125%; 
     left: 50%;
     transform: translateX(-50%);
     opacity: 0;
@@ -72,11 +67,11 @@
     user-select: none;
   }
   
-  /* Triangle arrow under tooltip */
+ 
   .tooltip-text::after {
     content: '';
     position: absolute;
-    top: 100%; /* at the bottom of tooltip */
+    top: 100%; 
     left: 50%;
     margin-left: -5px;
     border-width: 5px;
@@ -88,3 +83,67 @@
     visibility: visible;
     opacity: 1;
   }
+
+  .tooltip-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .cheese-image {
+    width: 160px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .cheese-image:hover {
+    transform: scale(1.2);
+  }
+  
+  
+  
+  
+  /* Cheese touch popup */
+  .cheese-touch-popup {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: slideInUp 1s ease forwards;
+    z-index: 10;
+  }
+  
+  .cheese-touch-text {
+    font-size: 1.3rem;
+    color: #222;
+    background: #ffd54f;
+    padding: 0.4rem 0.8rem;
+    border-radius: 8px;
+    font-family: 'Schoolbell', cursive;
+    
+    margin-left: 4rem;
+  }
+  
+  .cheese-touch-image {
+    width: 300px;
+    height: auto;
+    transform: rotate(-5deg);
+    filter: drop-shadow(2px 4px 4px rgba(0,0,0,0.3));
+    margin-left: 4rem;
+  }
+  
+  @keyframes slideInUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
+
+  
+  
+  
