@@ -1,0 +1,102 @@
+.login-page {
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Schoolbell', cursive;
+  }
+  
+  .login-box {
+    background-color: transparent !important; /* override any bg color */
+  
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 16px; /* slight rounding */
+    background-image: url('../assets/postit.avif');
+    background-size: 150% auto;
+    padding: 3rem 2.5rem;
+    max-width: 380px;
+    width: 100%;
+    text-align: center;
+  
+    /* optionally add a subtle tilt */
+    transform: rotate(-2deg);
+    box-sizing: border-box;
+    user-select: none;
+    font-family: 'Schoolbell', cursive;
+  }
+  
+  .login-box h2 {
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    color: #d17f1a; /* cheese yellow-ish */
+  }
+  
+  .login-box form input {
+    font-family: 'Schoolbell', cursive;
+    display: block;
+    width: 85%;
+    padding: 0.8rem 1rem;
+    margin: 1rem 0;
+    font-size: 1.1rem;
+    border: 2px solid #d17f1a;
+    border-radius: 12px;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .login-box form input:focus {
+    border-color: #fbc02d;
+  }
+  
+  .login-box .error-msg {
+    color: #b00020;
+    margin: 0.5rem 0 0;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  .login-box form button {
+    margin-top: 1rem;
+    padding: 0.8rem 0;
+    width: 98%;
+    font-size: 1.3rem;
+    background-color: #fdd835;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Schoolbell', cursive;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .login-box form button:hover {
+    background-color: #fbc02d;
+  }
+  
+  .toggle-text {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  .toggle-text button {
+    background: none;
+    border: none;
+    color: #d17f1a;
+    cursor: pointer;
+    font-family: 'Schoolbell', cursive;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 0;
+    margin-left: 0.3rem;
+  }
+  
+  .toggle-text button:hover {
+    text-decoration: underline;
+  }
+  

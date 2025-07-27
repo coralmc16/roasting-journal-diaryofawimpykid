@@ -1,0 +1,83 @@
+.journal-page {
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding-top: 60px;
+  }
+  
+  .writing-area {
+    width: 70%;
+    min-height: 70%;
+    padding: 30px;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    font-family: 'Shadows Into Light', cursive;
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    white-space: pre-wrap;
+  }
+  
+  .user-text {
+    outline: none;
+    color: #333;
+    min-height: 100px;
+  }
+  
+  .roast-text {
+    margin-top: 40px;
+    color: purple;
+    white-space: pre-wrap;
+  }
+  
+  .journal-page {
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    padding: 4rem;
+    font-family: 'Schoolbell', cursive;
+  }
+  
+  .writing-area {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    background: none;      /* ✅ removes any background */
+    box-shadow: none;      /* ✅ removes shadows */
+    padding: 0;            /* ✅ no padding */
+    border: none;
+    margin-top: 1.3rem;
+  }
+  
+  .user-text {
+    min-height: 150px;
+    font-size: 1.4rem;
+    outline: none;
+    white-space: pre-wrap;
+    border: none;
+    background-color: transparent; /* ✅ Ensures it's fully see-through */
+    padding: 0;
+    margin: 0;
+    color: #333;
+    font-family: 'Schoolbell', cursive;
+    resize: none;
+    box-shadow: none;
+  }
+  
+  .roast-text.typing-text {
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    color: #000000;
+    font-family: 'Schoolbell', cursive;
+  }
+
+  .user-text:empty::before {
+    content: attr(data-placeholder);
+    color: #999;
+    pointer-events: none; /* so the text is not selectable */
+    user-select: none;
+  }

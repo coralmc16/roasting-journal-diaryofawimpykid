@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Schoolbell&display=swap');
+
+.intro-page {
+  height: 100vh;
+  width: 100vw;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical centering */
+  align-items: center;     /* horizontal centering */
+  padding: 40px;
+  text-align: center;
+}
+
+.intro-text {
+  font-size: 2rem;
+  color: #333;
+  background: rgba(255, 255, 255, 0); /* transparent */
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  font-family: 'Schoolbell', cursive;
+  margin-top: -10rem;
+}
+
+.begin-button {
+    outline: none;          /* removes focus outline */
+    border: none;           /* removes border */
+    background: none;       /* remove default background since you're using an image */
+    padding: 0;             /* remove padding if needed */
+    cursor: pointer;        /* pointer cursor */
+  }
+  
+  
+  .cheese-image {
+    width: 130px;
+    height: auto;
+    transition: transform 0.3s ease;
+    display: block;
+    user-select: none;
+  }
+  
+  .begin-button:hover .cheese-image {
+    transform: scale(1.2);
+  }
+
+  .tooltip-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .tooltip-text {
+    visibility: hidden;
+    width: 130px;
+    background-color: #333333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 6px 10px;
+    position: absolute;
+    z-index: 10;
+    bottom: 125%; /* position above the cheese */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-family: 'Schoolbell', cursive;
+    font-size: 1rem;
+    pointer-events: none;
+    user-select: none;
+  }
+  
+  /* Triangle arrow under tooltip */
+  .tooltip-text::after {
+    content: '';
+    position: absolute;
+    top: 100%; /* at the bottom of tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+  }
+  
+  .tooltip-container:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
