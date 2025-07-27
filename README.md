@@ -1,3 +1,9 @@
+Welcome to the Wimpy Kid Roasting Journal: a playful, interactive website inspired by the Diary of a Wimpy Kid universe. Customize your avatar, log your daily thoughts, and get hilariously roasted by a chatbot. Yes, it will hurt your feelings but in the best way possible.
+
+Built for a hackathon project under the theme "Make Anything, But Make it YOU by CS Girlies" 
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
