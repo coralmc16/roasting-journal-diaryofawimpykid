@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import './CoverPage.css';
 import { playClickSound } from '../utils/playSound'; 
 
@@ -16,7 +16,7 @@ import body2 from '../assets/body/boy3.svg';
 import body3 from '../assets/body/girl1.svg';
 import body4 from '../assets/body/girl3.svg';
 
-
+import gregImg from '../assets/greg.png';  // <-- Import Greg image here
 
 const hairOptions = [hair1, hair2, hair3, hair4, hair5, hair6, hair7, hair8];
 const bodyOptions = [body1, body2, body3, body4];
@@ -26,15 +26,20 @@ const CoverPage = ({ onOpen }) => {
   const [bodyIndex, setBodyIndex] = useState(0);
   const [nameInput, setNameInput] = useState('');
   const [displayedName, setDisplayedName] = useState('');
-  const canvasRef = useRef(null);
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === 'Enter') onOpen();
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [onOpen]);
+  // New state for popup visibility
+  const [showPopup, setShowPopup] = useState(false);
+
+  // Show popup for 3 seconds on name submit
+  const handleNameSubmit = () => {
+    playClickSound(); 
+    const trimmedName = nameInput.trim();
+    if (trimmedName) {
+      setDisplayedName(trimmedName);
+      setShowPopup(true);  // Show popup when name submitted
+      setTimeout(() => setShowPopup(false), 3000); // Hide popup after 3s
+    }
+  };
 
   const changeHair = (dir) => {
     playClickSound(); 
@@ -44,62 +49,6 @@ const CoverPage = ({ onOpen }) => {
   const changeBody = (dir) => {
     playClickSound(); 
     setBodyIndex((prev) => (prev + dir + bodyOptions.length) % bodyOptions.length);
-  };
-
-  const handleNameSubmit = () => {
-    playClickSound(); 
-    setDisplayedName(nameInput.trim());
-  };
-
-  const handleStart = () => {
-    playClickSound(); 
-    onOpen();
-  };
-
- 
-  const handleDownloadAvatar = async () => {
-    playClickSound();
-
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-
- 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    canvas.width = 400;
-    canvas.height = 400;
-
- 
-    const loadImage = (src) =>
-      new Promise((resolve, reject) => {
-        const img = new Image();
-        img.crossOrigin = 'anonymous'; 
-        img.onload = () => resolve(img);
-        img.onerror = reject;
-        img.src = src;
-      });
-
-    try {
-      const bodyImg = await loadImage(bodyOptions[bodyIndex]);
-      const hairImg = await loadImage(hairOptions[hairIndex]);
-
-      //Draw body first
-      ctx.drawImage(bodyImg, 0, 0, canvas.width, canvas.height);
-      
-      ctx.drawImage(hairImg, 0, 0, canvas.width, canvas.height);
-
-      //Create download link
-      const dataURL = canvas.toDataURL('image/png');
-      const link = document.createElement('a');
-      link.href = dataURL;
-      link.download = `${displayedName || 'my_avatar'}.png`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } catch (err) {
-      console.error('Error loading images for avatar export', err);
-      alert('Failed to export avatar image.');
-    }
   };
 
   return (
@@ -133,15 +82,33 @@ const CoverPage = ({ onOpen }) => {
           <button onClick={() => changeBody(1)}>→</button>
         </div>
 
-        <button className="download-btn" onClick={handleDownloadAvatar}>
-          Download Avatar
+        <button
+          className="start-btn"
+          onClick={() => {
+            playClickSound();
+            const finalName = displayedName || nameInput.trim();
+            if (!finalName) {
+              alert('Please enter your name before starting!');
+              return;
+            }
+            onOpen({
+              hairIndex,
+              bodyIndex,
+              name: finalName,
+            });
+          }}
+        >
+          Start →
         </button>
-
-        <button className="start-btn" onClick={handleStart}>Start →</button>
       </div>
 
-      {/* Hidden canvas for exporting avatar */}
-      <canvas ref={canvasRef} style={{ display: 'none' }} />
+      {/* Popup */}
+      {showPopup && (
+        <div className="popup-greg">
+          <img src={gregImg} alt="Greg" />
+          <p>looks just like you!</p>
+        </div>
+      )}
     </div>
   );
 };

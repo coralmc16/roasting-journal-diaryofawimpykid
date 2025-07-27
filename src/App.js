@@ -7,15 +7,21 @@ import JournalPage from './components/Journal';
 import './App.css';
 
 function App() {
-  const [stage, setStage] = useState('intro'); // start with intro
-  const [user, setUser] = useState(null);
+  const [stage, setStage] = useState('intro');
+  const [user, setUser] = useState(null); // username string from login
+  const [avatarData, setAvatarData] = useState(null); // object with hairIndex, bodyIndex, name
 
   const handleIntroContinue = () => setStage('login');
   const handleLogin = (username) => {
     setUser(username);
     setStage('cover');
   };
-  const handleCoverOpen = () => setStage('journal');
+
+  // This receives avatar data from CoverPage, sets it in state, and moves to journal page
+  const handleCoverOpen = (avatar) => {
+    setAvatarData(avatar);
+    setStage('journal');
+  };
 
   return (
     <div className="App">
@@ -52,11 +58,11 @@ function App() {
             exit={{ opacity: 0 }}
             transition={{ duration: 1 }}
           >
-            <CoverPage onOpen={handleCoverOpen} user={user} />
+            <CoverPage onOpen={handleCoverOpen} />
           </motion.div>
         )}
 
-        {stage === 'journal' && (
+        {stage === 'journal' && avatarData && (
           <motion.div
             key="journal"
             initial={{ opacity: 0 }}
@@ -64,7 +70,7 @@ function App() {
             exit={{ opacity: 0 }}
             transition={{ duration: 1 }}
           >
-            <JournalPage user={user} />
+            <JournalPage user={avatarData} />
           </motion.div>
         )}
       </AnimatePresence>

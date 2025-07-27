@@ -1,33 +1,32 @@
 import React, { useState } from 'react';
-import paperBg from '../assets/paper.jpg'; // adjust path if needed
-import postitImg from '../assets/postit.png'; // add this import
+import paperBg from '../assets/paper.jpg'; 
+import postitImg from '../assets/postit.png'; 
 import './LoginPage.css';
 
 const LoginPage = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [isLogin, setIsLogin] = useState(true); // toggle login/signup
+  const [isLogin, setIsLogin] = useState(true); 
   const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Example validation (replace with real auth)
     if (username.trim() === '' || password.trim() === '') {
       setError('Please enter username and password');
       return;
     }
 
-    // Simple fake auth logic for demo
+    
     if (isLogin) {
       if (password.length < 4) {
         setError('Password too short');
         return;
       }
-      // proceed to next step on login success
+     
       onLogin(username);
     } else {
-      // signup logic here, e.g., confirm password
+     
       onLogin(username);
     }
   };

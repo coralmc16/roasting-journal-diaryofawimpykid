@@ -51,18 +51,18 @@
 
   .avatar-part {
     position: absolute;
-    width: 90%;
+    width: 70%;
     height: auto;
-    left: 3rem;
-    top: 3rem;
+    left: 2rem;
+    top: 1rem;
     pointer-events: none;
   }
   
   
   .avatar-hair {
-    top: -1rem;       
-    left: 3rem;        
-    width: 90%;       
+    top: -3rem;       
+    left: 2rem;        
+    width: 70%;       
     z-index: 2;
   }
 
@@ -175,3 +175,47 @@
   .download-btn:hover {
     background-color: #006fa6; 
   }
+
+  .popup-greg {
+    position: fixed;
+    bottom: 10rem;
+    right: 5rem;
+    width: 10rem;
+    background: rgba(255, 255, 255, 0.0);
+    border-radius: 12px;
+    padding: 10px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: popupSlideUp 0.5s ease forwards;
+    z-index: 1000;
+  }
+  
+  .popup-greg img {
+    width: 15rem;
+    height: auto;
+    margin-bottom: 8px;
+  }
+  
+  .popup-greg p {
+    font-family: "Schoolbell";
+    font-size: 30px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin: 0;
+  }
+  
+  /* Animation for popup sliding up */
+  @keyframes popupSlideUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  

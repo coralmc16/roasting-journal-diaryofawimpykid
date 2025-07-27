@@ -3,7 +3,7 @@ import './IntroPage.css';
 import backgroundImage from '../assets/bkg.png';
 import themeSong from '../assets/themesong1.mp3';
 import cheeseImg from '../assets/cheese.webp';
-import cheeseTouchImg from '../assets/touch1.png'; // <-- NEW
+import cheeseTouchImg from '../assets/touch1.png'; 
 
 const fullText =
   "Weelcome to the Diary of a Wimpy Kid-themed Roasting Journal by Coral Carlsson. Design your avatar and chat with the roaster chatbot.";
@@ -11,7 +11,7 @@ const fullText =
 const IntroPage = ({ onContinue }) => {
   const [displayedText, setDisplayedText] = useState('');
   const [isPlaying, setIsPlaying] = useState(false);
-  const [gotCheeseTouch, setGotCheeseTouch] = useState(false); // <-- NEW
+  const [gotCheeseTouch, setGotCheeseTouch] = useState(false);
   const themeAudioRef = useRef(null);
   const typingIntervalRef = useRef(null);
 
@@ -34,7 +34,7 @@ const IntroPage = ({ onContinue }) => {
   const handleBeginClick = () => {
     if (isPlaying) return;
 
-    setGotCheeseTouch(true); // Show cheese touch popup
+    setGotCheeseTouch(true); 
     setIsPlaying(true);
 
     const audio = new Audio(themeSong);
@@ -72,7 +72,7 @@ const IntroPage = ({ onContinue }) => {
         alignItems: 'center',
         padding: '2rem',
         textAlign: 'center',
-        position: 'relative', // <-- Required for cheeseTouch positioning
+        position: 'relative',
       }}
     >
       <p className="intro-text">{displayedText}</p>

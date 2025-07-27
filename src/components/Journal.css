@@ -46,9 +46,9 @@
     width: 100%;
     max-width: 900px;
     margin: 0 auto;
-    background: none;      /* ✅ removes any background */
-    box-shadow: none;      /* ✅ removes shadows */
-    padding: 0;            /* ✅ no padding */
+    background: none;      
+    box-shadow: none;      
+    padding: 0;          
     border: none;
     margin-top: 1.3rem;
   }
@@ -59,7 +59,7 @@
     outline: none;
     white-space: pre-wrap;
     border: none;
-    background-color: transparent; /* ✅ Ensures it's fully see-through */
+    background-color: transparent; 
     padding: 0;
     margin: 0;
     color: #333;
@@ -78,6 +78,29 @@
   .user-text:empty::before {
     content: attr(data-placeholder);
     color: #999;
-    pointer-events: none; /* so the text is not selectable */
+    pointer-events: none; 
     user-select: none;
+  }
+
+  .avatar-display {
+    position: absolute;
+    top: -3rem;
+    right: 5rem;
+    width: 25rem;
+    text-align: center;
+    z-index: 100;
+  }
+  
+  
+  .avatar-part {
+    width: 100%;
+    display: block;
+  }
+  
+  .hair-overlay {
+    position: absolute;
+    top: 10rem;
+    left: 10rem;
+    width: 100%;
+    pointer-events: none;
   }

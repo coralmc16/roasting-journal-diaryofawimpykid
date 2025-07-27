@@ -10,11 +10,11 @@
   }
   
   .login-box {
-    background-color: transparent !important; /* override any bg color */
+    background-color: transparent !important; 
   
     background-repeat: no-repeat;
     background-position: center;
-    border-radius: 16px; /* slight rounding */
+    border-radius: 16px; 
     background-image: url('../assets/postit.avif');
     background-size: 150% auto;
     padding: 3rem 2.5rem;
@@ -22,7 +22,7 @@
     width: 100%;
     text-align: center;
   
-    /* optionally add a subtle tilt */
+
     transform: rotate(-2deg);
     box-sizing: border-box;
     user-select: none;
@@ -32,7 +32,7 @@
   .login-box h2 {
     margin-bottom: 1rem;
     font-size: 2.5rem;
-    color: #d17f1a; /* cheese yellow-ish */
+    color: #d17f1a; 
   }
   
   .login-box form input {
